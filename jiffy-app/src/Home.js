@@ -27,21 +27,27 @@ const Home = () => {
             <h2 className="headerText">Welcome to Jiffy Health!</h2>
             <h4 className="subText">To get started, please select the appropriate button below</h4>
 
-            <div className="button-container">
+            <Container>
                 <Row>
-                    <Link to="login">
-                        <button>Doctors</button>
-                    </Link>
+                    <Col></Col>
+                    <Col>
+                        <Link to="login">
+                            <button>Doctors</button>
+                        </Link>
+                    </Col>
+                    <Col></Col>
+                </Row>
+                <Row>
+                    <Col></Col>
+                    <Col>
+                        <Link to="briefQuestionnaire">
+                            <button>Patients</button>
+                        </Link>
+                    </Col>
+                    <Col></Col>
 
                 </Row>
-
-                <Row>
-                    <Link to="briefQuestionnaire">
-                        <button>Patients</button>
-                    </Link>
-
-                </Row>
-            </div>
+            </Container>
 
 
         </div>

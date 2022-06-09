@@ -7,7 +7,7 @@
     color: #333;
 }
 .navbar {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     align-items: center;
     max-width: 600px;
@@ -15,7 +15,9 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.46);
 }
 .navbar h1 {
+    padding-top: 5px;
     color: #bc74c0;
+    font-weight: bold;
 }
 .navbar .links {
     margin-left: auto;
@@ -37,16 +39,21 @@ h2.headerText{
     text-align: center;
     padding-bottom: 20px;
     padding-top: 20px;
+    font-weight: bold;
 }
 h4.subText{
     text-align: center;
     padding-bottom: 20px;
-    padding-top: 20px;
+    font-size: medium;
 }
-//.button {
-//    background-color: #04AA6D;
+h4.questions{
+    font-size: small;
+}
+.radioAdjust{
+    padding-top:25px;
+}
+//.radio {
 //    border: none;
-//    color: white;
 //    padding: 20px;
 //    text-align: center;
 //    text-decoration: none;
