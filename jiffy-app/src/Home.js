@@ -13,33 +13,36 @@ const Home = () => {
     //     }
     // })
 
-    const handleDoctor = () => {
-        console.log('doctor button');
-        <Link to="login"></Link>
-    }
-
-    const handlePatient = () => {
-        console.log('patient button');
-    }
+    // const handleDoctor = () => {
+    //     console.log('doctor button');
+    //     <Link to="login"></Link>
+    // }
+    //
+    // const handlePatient = () => {
+    //     console.log('patient button');
+    // }
 
     return (
         <div className="home">
-            <h2 className="homeWelcome">Welcome to Jiffy Health!</h2>
-            <h4 className="homeButtons">To get started, please select the appropriate button below</h4>
+            <h2 className="headerText">Welcome to Jiffy Health!</h2>
+            <h4 className="subText">To get started, please select the appropriate button below</h4>
 
-            <Row>
-                <Link to="login">
-                    <button>Doctors</button>
-                </Link>
+            <div className="button-container">
+                <Row>
+                    <Link to="login">
+                        <button>Doctors</button>
+                    </Link>
 
-            </Row>
+                </Row>
 
-            <Row>
-                <Link to="briefQuestionnaire">
-                    <button>Patients</button>
-                </Link>
+                <Row>
+                    <Link to="briefQuestionnaire">
+                        <button>Patients</button>
+                    </Link>
 
-            </Row>
+                </Row>
+            </div>
+
 
         </div>
     )
