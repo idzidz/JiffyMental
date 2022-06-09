@@ -94,42 +94,46 @@ const GADS7 = () => {
 
                 <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Worrying too much about different things </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q02" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q03" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q03" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q03" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q03" /> </Col>
                 </Row>
 
                 <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
-                    <Col xs={4}> Having trouble relaxing </Col>
-                    <Col xs={2}  style={{paddingBottom:"-10px"}}>  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q02" /> </Col>
+                    <Col xs={4}> Having difficulty relaxing </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q04" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q04" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q04" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q04" /> </Col>
                 </Row>
 
                 <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Being so restless that it is hard to sit still </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q02" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q05" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q05" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q05" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q05" /> </Col>
                 </Row>
 
                 <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Becoming easily annoyed or irritable </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q02" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q06" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q06" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q06" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q06" /> </Col>
                 </Row>
 
                 <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
-                    <Col xs={4}> Feeling afraid, as if something awful might happen </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q02" /> </Col>
+                    <Col xs={4}> Feeling afraid, as if some- thing awful might happen </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q07" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option02" name="q07" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option03" name="q07" /> </Col>
+                    <Col xs={2} className="radioAdjust">  <input type="radio" value="option04" name="q07" /> </Col>
+                </Row>
+
+                <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                    <Col><button style={{width:"300px"}}>Continue</button></Col>
                 </Row>
             </Container>
 
