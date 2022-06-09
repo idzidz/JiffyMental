@@ -1,10 +1,12 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const navigate = useNavigate();
 
     const mockDatabase = [
         {
@@ -36,6 +38,13 @@ const Login = () => {
                 setErrorMessage({name: "passwordValidation", message: errors.passwordValidation})
             } else{
                 setIsSubmitted(true);
+                if (userData.type === "patient"){
+                    navigate("../patient")
+                }else if (userData.type === "doctor"){
+                    navigate("../doctor")
+                }else{
+                    navigate("../error")
+                }
             }
         }else{
             setErrorMessage({name: "usernameValidation", message: errors.usernameValidation})
@@ -72,7 +81,7 @@ const Login = () => {
         <div className="login">
             <div className="login-form">
                 <div className="title">Log in</div>
-                {isSubmitted ? <div>Successfully logged in</div> : renderForm}
+                {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
             </div>
         </div>
     )

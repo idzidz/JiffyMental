@@ -1,6 +1,11 @@
 const Doctor = () => {
     return(
-        <h2 className="headerText">todo: Doctor landing page</h2>
+        <div>
+            <h4 className="subText">todo: Doctor landing page</h4>
+            <h4 className="subText">todo: Change to Doctor navbar</h4>
+
+        </div>
+
     )
 }
 
