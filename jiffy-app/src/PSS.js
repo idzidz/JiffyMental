@@ -110,6 +110,7 @@ const PSS = () => {
             <h4 className="subText">In the last month, how often have you:</h4>
 
             <Container>
+
                 <div className="pssQ" style={{paddingTop:"-20px"}}>
                     <Row style={{fontWeight:"bold"}}>
                         <Col>Been upset because of something that happened unexpectedly?</Col>
@@ -127,6 +128,174 @@ const PSS = () => {
                         <Col>  <input type="radio" value={surveyOptions[2].value} name="q01"/> </Col>
                         <Col>  <input type="radio" value={surveyOptions[3].value} name="q01"/> </Col>
                         <Col>  <input type="radio" value={surveyOptions[4].value} name="q01"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Felt that you were unable to control the important things in your life?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q02"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Felt nervious and stressed?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q03"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q03"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q03"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q03"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q03"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Felt confident about your ability to handle your personal problems?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q04"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q04"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q04"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q04"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q04"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Felt that things were going your way?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q05"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q05"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q05"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q05"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q05"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Found that you could not cope with all the things that you had to do?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q06"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q06"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q06"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q06"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q06"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Been able to control irritations in your life?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q07"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q07"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q07"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q07"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q07"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Felt that you were unable to control the important things in your life?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q02"/> </Col>
+                    </Row>
+                    <Row className="divQ"></Row>
+                </div>
+
+                <div className="pssQ">
+                    <Row style={{fontWeight:"bold"}}>
+                        <Col>Felt that you were unable to control the important things in your life?</Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col> {surveyOptions[0].option}  </Col>
+                        <Col> {surveyOptions[1].option}  </Col>
+                        <Col> {surveyOptions[2].option}  </Col>
+                        <Col> {surveyOptions[3].option}  </Col>
+                        <Col> {surveyOptions[4].option}  </Col>
+                    </Row>
+                    <Row style={{paddingTop:"10px"}}>
+                        <Col>  <input type="radio" value={surveyOptions[0].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[1].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[2].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[3].value} name="q02"/> </Col>
+                        <Col>  <input type="radio" value={surveyOptions[4].value} name="q02"/> </Col>
                     </Row>
                     <Row className="divQ"></Row>
                 </div>
