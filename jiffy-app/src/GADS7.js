@@ -74,66 +74,66 @@ const GADS7 = () => {
             <Container>
                 <Row style={{textAlign: "center", fontSize: "small"}}>
                     <Col xs={4}/>
-                    <Col xs={2}> {surveyOptions[0].option}  </Col>
-                    <Col xs={2}> {surveyOptions[1].option}  </Col>
-                    <Col xs={2}> {surveyOptions[2].option}  </Col>
-                    <Col xs={2}> {surveyOptions[3].option}  </Col>
+                    <Col> {surveyOptions[0].option}  </Col>
+                    <Col> {surveyOptions[1].option}  </Col>
+                    <Col> {surveyOptions[2].option}  </Col>
+                    <Col> {surveyOptions[3].option}  </Col>
                 </Row>
 
-                <Row onChange={(event) => {return setQ01(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px", borderBottom:"1px transparent"}}>
+                <Row className="radioAdjust" onChange={(event) => {return setQ01(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px", borderBottom:"1px transparent"}}>
                     <Col xs={4}> Feeling nervous, anxious, or on edge </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[0].value} name="q01"/> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[1].value} name="q01"/> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[2].value} name="q01"/> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[3].value} name="q01"/> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[0].value} name="q01"/> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[1].value} name="q01"/> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[2].value} name="q01"/> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[3].value} name="q01"/> </Col>
                 </Row>
 
-                <Row onChange={(event) => {return setQ02(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                <Row className="radioAdjust" onChange={(event) => {return setQ02(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Not being able to stop or control worrying </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[0].value} name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[1].value} name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[2].value} name="q02" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[3].value} name="q02" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[0].value} name="q02" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[1].value} name="q02" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[2].value} name="q02" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[3].value} name="q02" /> </Col>
                 </Row>
 
-                <Row onChange={(event) => {return setQ03(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                <Row className="radioAdjust" onChange={(event) => {return setQ03(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Worrying too much about different things </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[0].value} name="q03" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[1].value} name="q03" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[2].value} name="q03" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[3].value} name="q03" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[0].value} name="q03" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[1].value} name="q03" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[2].value} name="q03" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[3].value} name="q03" /> </Col>
                 </Row>
 
-                <Row onChange={(event) => {return setQ04(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                <Row className="radioAdjust" onChange={(event) => {return setQ04(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Having difficulty relaxing </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[0].value} name="q04" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[1].value} name="q04" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[2].value} name="q04" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[3].value} name="q04" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[0].value} name="q04" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[1].value} name="q04" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[2].value} name="q04" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[3].value} name="q04" /> </Col>
                 </Row>
 
-                <Row onChange={(event) => {return setQ05(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                <Row className="radioAdjust" onChange={(event) => {return setQ05(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Being so restless that it is hard to sit still </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[0].value} name="q05" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[1].value} name="q05" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[2].value} name="q05" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[3].value} name="q05" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[0].value} name="q05" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[1].value} name="q05" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[2].value} name="q05" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[3].value} name="q05" /> </Col>
                 </Row>
 
-                <Row onChange={(event) => {return setQ06(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                <Row className="radioAdjust" onChange={(event) => {return setQ06(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Becoming easily annoyed or irritable </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[0].value} name="q06" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[1].value} name="q06" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[2].value} name="q06" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[3].value} name="q06" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[0].value} name="q06" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[1].value} name="q06" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[2].value} name="q06" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[3].value} name="q06" /> </Col>
                 </Row>
 
-                <Row onChange={(event) => {return setQ07(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                <Row className="radioAdjust" onChange={(event) => {return setQ07(event.target.value)}} style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
                     <Col xs={4}> Feeling afraid, as if some- thing awful might happen </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[0].value} name="q07" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[1].value} name="q07" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[2].value} name="q07" /> </Col>
-                    <Col xs={2} className="radioAdjust">  <input type="radio" value={surveyOptions[3].value} name="q07" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[0].value} name="q07" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[1].value} name="q07" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[2].value} name="q07" /> </Col>
+                    <Col>  <input type="radio" value={surveyOptions[3].value} name="q07" /> </Col>
                 </Row>
 
                 <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
