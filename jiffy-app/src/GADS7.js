@@ -136,7 +136,7 @@ const GADS7 = () => {
                     <Col>  <input type="radio" value={surveyOptions[3].value} name="q07" /> </Col>
                 </Row>
 
-                <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px"}}>
+                <Row style={{textAlign: "center", fontSize: "small", paddingBottom: "20px", paddingTop: "20px"}}>
                     <Col><button onClick={calculateScore} style={{width:"300px"}}>Continue</button></Col>
                 </Row>
             </Container>
