@@ -28,23 +28,20 @@ const Home = () => {
             <h4 className="subText">To get started, please select the appropriate button below</h4>
 
             <Container>
-                <Row>
-                    <Col></Col>
+                <Row style={{textAlign: "center", paddingBottom: "50px"}}>
                     <Col>
                         <Link to="login">
-                            <button>Doctors</button>
+                            <button style={{width: "300px"}}>Doctors</button>
                         </Link>
                     </Col>
-                    <Col></Col>
                 </Row>
-                <Row>
-                    <Col></Col>
+
+                <Row style={{textAlign: "center"}}>
                     <Col>
                         <Link to="briefQuestionnaire">
-                            <button>Patients</button>
+                            <button style={{width: "300px"}}>Patients</button>
                         </Link>
                     </Col>
-                    <Col></Col>
 
                 </Row>
             </Container>
