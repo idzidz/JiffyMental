@@ -4,49 +4,45 @@ import {Container, Row, Col} from 'react-bootstrap';
 const BriefQ = () => {
     return(
         <div>
-            <h2 className="headerText">A few quick questions</h2>
-            <h4 className="subText">Please click on a situations you are experiencing, if any.</h4>
-            <h4 className="subText">If you are not experiencing any of these situations, press continue.</h4>
 
-            <Row>
-                <Col/>
-                <Col xs={8}>
-                    <Link to="../gads7">
-                        <button>Thoughts about self-harm</button>
-                    </Link>
-                </Col>
-                <Col/>
+            <Row style={{textAlign:"center"}}>
+                <h2 className="headerText">A few quick questions</h2>
+                <h4 className="subText">Please click on a situation you are experiencing, if any</h4>
+                <h4 className="subText">If you are not experiencing any of these situations or would like to skip this process, press skip</h4>
             </Row>
 
-            <Row>
-                <Col/>
-                <Col xs={8}>
+
+            <Row style={{textAlign:"center", paddingBottom:"50px"}}>
+                <Col>
                     <Link to="../gads7">
-                        <button>Eating a lot less than usual</button>
+                        <button style={{width: "300px"}}>Thoughts about self-harm</button>
                     </Link>
                 </Col>
-                <Col/>
             </Row>
 
-            <Row>
-                <Col/>
-                <Col xs={8}>
+            <Row style={{textAlign:"center", paddingBottom:"50px"}}>
+                <Col>
                     <Link to="../gads7">
-                        <button>Irregular sleeping schedule</button>
+                        <button style={{width: "300px"}}>Eating a lot less than usual</button>
                     </Link>
                 </Col>
-                <Col/>
             </Row>
 
-            <Row>
-                <Col/>
-                <Col xs={4}>
+            <Row style={{textAlign:"center", paddingBottom:"100px"}}>
+                <Col>
+                    <Link to="../gads7">
+                        <button style={{width: "300px"}}>Irregular sleeping schedule</button>
+                    </Link>
+                </Col>
+            </Row>
+
+            <Row style={{textAlign:"center"}}>
+                <Col>
                     <Link to="../login">
-                        <button>Continue</button>
+                        <button style={{width: "300px"}}>Skip</button>
                     </Link>
                 </Col>
 
-                <Col/>
             </Row>
 
 
