@@ -1,13 +1,13 @@
 import {Container, Row, Col} from 'react-bootstrap';
 
-const Signup = () => {
+const Recovery = () => {
     return (
         <div>
 
             <Container>
 
                 <Row style={{textAlign:"center"}}>
-                    <Col><h4 className="headerText">Signup page</h4></Col>
+                    <Col><h4 className="headerText">Password recovery page</h4></Col>
                 </Row>
 
             </Container>
@@ -16,4 +16,4 @@ const Signup = () => {
     )
 }
 
-export default Signup;
+export default Recovery;

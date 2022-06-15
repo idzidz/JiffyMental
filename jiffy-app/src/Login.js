@@ -1,12 +1,21 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {useNavigate} from "react-router-dom";
+import {Container, Row, Col} from 'react-bootstrap';
 
 const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
     const navigate = useNavigate();
+
+    const handleSignup = () => {
+        navigate("../signup");
+    }
+
+    const handleForgotpwd = () => {
+        navigate("../forgotPwd");
+    }
 
     const mockDatabase = [
         {
@@ -83,6 +92,17 @@ const Login = () => {
                 <div className="title">Log in</div>
                 {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
             </div>
+
+            <Container style={{textAlign: "center"}}>
+                <Row style={{paddingTop:"50px"}}>
+                    <Col> <button onClick={handleSignup} style={{width:"300px"}}> Sign up </button> </Col>
+                </Row>
+                <Row style={{paddingTop:"50px"}}>
+                    <Col> <button onClick={handleForgotpwd} style={{width:"300px"}}> Forgot password</button></Col>
+                </Row>
+
+
+            </Container>
         </div>
     )
 }

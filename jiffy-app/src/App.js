@@ -9,6 +9,8 @@ import GADS7 from './GADS7';
 import PSS from './PSS';
 import PHQ9 from './PHQ9';
 import Crisis from './Crisis';
+import Recovery from './Recovery';
+import Signup from './Signup';
 import {Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
                 <Route path="/pss" element={<PSS></PSS>} />
                 <Route path="/phq9" element={<PHQ9></PHQ9>} />
                 <Route path="/crisis" element={<Crisis></Crisis>} />
+                <Route path="/forgotPwd" element={<Recovery></Recovery>} />
+                <Route path="/signup" element={<Signup></Signup>} />
             </Routes>
 
             {/*todo:   1. Create the 3 "eh" buttons on patient page + skip button*/}
