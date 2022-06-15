@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import {useNavigate} from "react-router-dom";
 import {Container, Row, Col} from 'react-bootstrap';
 
+
 const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState({});
@@ -41,6 +42,12 @@ const Login = () => {
         const { usernameValidation, passwordValidation} = document.forms[0];
 
         const userData = mockDatabase.find((user) => user.username === usernameValidation.value)
+
+        // try{
+        //     const databaseTest = getUser("izelj", "password");
+        //     console.log(databaseTest);
+        // } catch (e){console.log(e);}
+
 
         if (userData){
             if (userData.password !== passwordValidation.value){
