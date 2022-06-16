@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {useNavigate} from "react-router-dom";
 import {Container, Row, Col} from 'react-bootstrap';
+import {getUser} from "./GetAPIs.js";
 
 
 const Login = () => {
@@ -42,6 +43,11 @@ const Login = () => {
         const { usernameValidation, passwordValidation} = document.forms[0];
 
         const userData = mockDatabase.find((user) => user.username === usernameValidation.value)
+
+        try{
+            const test01 = getUser('izelj', 'password');
+            console.log(test01);
+        } catch(error) {console.log(error);}
 
         // try{
         //     const databaseTest = getUser("izelj", "password");

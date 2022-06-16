@@ -12,6 +12,7 @@ module.exports.getUser = async (username, password) => {
 
 
 // (async () => {
+//     const {getDatabase} = require('./Database');
 //     const db = await getDatabase();
 //     const query = 'SELECT * FROM users WHERE username = $1 AND password = $2';
 //     const result = await db.query(query, ['izelj', 'password']);
