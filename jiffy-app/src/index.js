@@ -5,14 +5,20 @@ import App from './App';
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css"
 
+// const express = require('express');
+// const app = express();
+// const cors = require('cors');
+//
+// app.use(cors());
+// app.use(express.json());
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        <App/>
+        <App>
+
+        </App>
     </BrowserRouter>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals

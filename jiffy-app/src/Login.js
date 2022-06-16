@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {useNavigate} from "react-router-dom";
 import {Container, Row, Col} from 'react-bootstrap';
-import {getUser} from "./GetAPIs.js";
 
 
 const Login = () => {
@@ -33,26 +32,40 @@ const Login = () => {
     ]
 
     const errors = {
-        usernameValidation: "invalid username",
+        usernameValidation: "invalid credentials",
         passwordValidation: "invalid password"
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const { usernameValidation, passwordValidation} = document.forms[0];
+        const { usernameValidation, passwordValidation } = document.forms[0];
+        const userExists = false;
 
         const userData = mockDatabase.find((user) => user.username === usernameValidation.value)
 
-        try{
-            const test01 = getUser('izelj', 'password');
-            console.log(test01);
-        } catch(error) {console.log(error);}
 
-        // try{
-        //     const databaseTest = getUser("izelj", "password");
-        //     console.log(databaseTest);
-        // } catch (e){console.log(e);}
+        // Query database to see if user exists, return appropriate response on UI
+        try{
+            const url = "http://localhost:3000/api/getUser/" + usernameValidation.value + "/" + passwordValidation.value
+            const test = await fetch(url);
+            console.log(test);
+
+            try{
+                const val = await test.json();
+                if (usernameValidation.value === val.username && passwordValidation.value === val.password){
+                    let userExists = true;
+                    console.log("user exists");
+                }
+            }catch (e){
+                console.log(e);
+                console.log("user does not exist");
+            }
+        } catch (e){
+            console.log(e);
+        }
+
+
 
 
         if (userData){
