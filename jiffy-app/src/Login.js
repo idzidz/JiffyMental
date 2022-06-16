@@ -33,14 +33,15 @@ const Login = () => {
 
     const errors = {
         usernameValidation: "invalid credentials",
-        passwordValidation: "invalid password"
+        passwordValidation: "invalid credentials"
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
         const { usernameValidation, passwordValidation } = document.forms[0];
-        const userExists = false;
+        let userExists = false;
+        let userType = "";
 
         const userData = mockDatabase.find((user) => user.username === usernameValidation.value)
 
@@ -54,10 +55,19 @@ const Login = () => {
             try{
                 const val = await test.json();
                 if (usernameValidation.value === val.username && passwordValidation.value === val.password){
-                    let userExists = true;
+                    userExists = true;
                     console.log("user exists");
+                    try{
+                        const url = "http://localhost:3000/api/getUserType/" + usernameValidation.value;
+                        const test = await fetch(url);
+                        userType = await test.json();
+                        console.log(userType);
+                    }catch(e){
+                        console.log(e);
+                    }
                 }
             }catch (e){
+                setErrorMessage({name: "passwordValidation", message: errors.passwordValidation})
                 console.log(e);
                 console.log("user does not exist");
             }
@@ -65,24 +75,15 @@ const Login = () => {
             console.log(e);
         }
 
-
-
-
-        if (userData){
-            if (userData.password !== passwordValidation.value){
-                setErrorMessage({name: "passwordValidation", message: errors.passwordValidation})
-            } else{
-                setIsSubmitted(true);
-                if (userData.type === "patient"){
-                    navigate("../patient")
-                }else if (userData.type === "doctor"){
-                    navigate("../doctor")
-                }else{
-                    navigate("../error")
-                }
+        if (userExists){
+            setIsSubmitted(true);
+            if (userType === "patient"){
+                navigate("../patient")
+            }else if (userType === "doctor"){
+                navigate("../doctor")
+            }else{
+                navigate("../error")
             }
-        }else{
-            setErrorMessage({name: "usernameValidation", message: errors.usernameValidation})
         }
     };
 
