@@ -63,7 +63,7 @@ const Login = () => {
                         userType = await test.json();
                         console.log(userType);
                     }catch(e){
-                        console.log(e);
+                        console.log("Failed to get user type: " + e);
                     }
                 }
             }catch (e){

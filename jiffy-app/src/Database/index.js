@@ -6,8 +6,13 @@ const pool = require('../Database');
 app.use(cors());
 app.use(express.json());
 
+//GETTERS
+//
+//
+
+// Attempts to fetch user using given username and password.
 app.get('/api/getUser/:username/:password', async (req, res) => {
-    try{
+    try {
         const db = await pool.query('SELECT * FROM users WHERE username = $1 and password = $2', [req.params.username, req.params.password]);
         console.log(db);
         res.json(db.rows[0]);
@@ -18,9 +23,10 @@ app.get('/api/getUser/:username/:password', async (req, res) => {
     }
 })
 
+// Fetches user type using given username.
 // This API can only be called once it has been confirmed that the user exists.
 app.get('/api/getUserType/:username', async (req, res) => {
-    try{
+    try {
         // Get the user ID of the user
         const dbUserID = await pool.query('SELECT user_id FROM users WHERE username = $1', [req.params.username]);
         const userID = dbUserID.rows[0].user_id;
@@ -40,6 +46,43 @@ app.get('/api/getUserType/:username', async (req, res) => {
         }else{
             res.json("ERROR: User not found");
         }
+
+    } catch (e) {
+        console.log(e);
+    }
+})
+
+// SETTERS
+//
+//
+
+// Create a new user in the Users table.
+// This is meant to be paired with Doctor or Patient creation.
+// Returns the user_id required for Doctor or Patient row creation.
+app.post('/api/createUser/:username/:password', async (req, res) => {
+    try {
+        const createUser = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.params.username, req.params.password]);
+        const newUserID = await pool.query('SELECT user_id FROM users where username = $1', [req.params.username]);
+        //console.log(newUserID.rows[0].user_id);
+        res.json(newUserID.rows[0].user_id);
+
+    } catch (e) {
+        console.log(e);
+    }
+})
+
+// Creates a new Doctor row in the Doctor table.
+app.post('/api/createDoctor/:user_id/:first_name/:last_name', async (req, res) => {
+    try {
+
+    } catch (e) {
+        console.log(e);
+    }
+})
+
+// Creates a new Patient row in the Patient table.
+app.post('/api/createPatient/:user_id/:first_name/:last_name', async (req, res) => {
+    try {
 
     } catch (e) {
         console.log(e);
