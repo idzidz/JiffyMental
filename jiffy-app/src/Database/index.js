@@ -28,13 +28,14 @@ app.get('/api/getUser/:username/:password', async (req, res) => {
 app.get('/api/getUserType/:username', async (req, res) => {
     try {
         // Get the user ID of the user
+        console.log("Given username is: " + req.params.username);
         const dbUserID = await pool.query('SELECT user_id FROM users WHERE username = $1', [req.params.username]);
         const userID = dbUserID.rows[0].user_id;
-        // console.log("Given user ID is: " + userID);
+        console.log("Given user ID is: " + userID);
 
-        const db01 = await pool.query('SELECT * FROM users JOIN doctor ON users.user_id = doctor.user_id WHERE users.user_id = $1', [0])
-        const db02 = await pool.query('SELECT * FROM users JOIN patient ON users.user_id = patient.user_id WHERE users.user_id = $1', [0])
-        const foundUser = db01.rows[0].username;
+        const db01 = await pool.query('SELECT * FROM users JOIN doctor ON users.user_id = doctor.user_id WHERE users.user_id = $1', [userID])
+        const db02 = await pool.query('SELECT * FROM users JOIN patient ON users.user_id = patient.user_id WHERE users.user_id = $1', [userID])
+        // const foundUser = db01.rows[0].username;
         // console.log("Found user is: " + foundUser);
         // console.log("Length of db01 result: " + db01.rows.length);
         // console.log("Length of db02 result: " + db02.rows.length);
@@ -71,6 +72,24 @@ app.post('/api/createUser/:username/:password', async (req, res) => {
     }
 })
 
+// Creates a new Patient row in the Patient table.
+app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddress/:email/:social/:credit', async (req, res) => {
+    try {
+        const createUser = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.params.username, req.params.password]);
+        const newUserID = await pool.query('SELECT user_id FROM users where username = $1', [req.params.username]);
+        const toBeInserted = newUserID.rows[0].user_id;
+
+        console.log(toBeInserted);
+
+        const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, social_insurance_number, credit_card, home_address, email_address) VALUES ($1, $2, $3, $4, $5, $6, $7)', [toBeInserted, req.params.firstname, req.params.lastname, req.params.social, req.params.credit, req.params.homeaddress, req.params.email]);
+
+        res.json("true");
+
+    } catch (e) {
+        console.log(e);
+    }
+})
+
 // Creates a new Doctor row in the Doctor table.
 app.post('/api/createDoctor/:user_id/:first_name/:last_name', async (req, res) => {
     try {
@@ -80,14 +99,7 @@ app.post('/api/createDoctor/:user_id/:first_name/:last_name', async (req, res) =
     }
 })
 
-// Creates a new Patient row in the Patient table.
-app.post('/api/createPatient/:user_id/:first_name/:last_name', async (req, res) => {
-    try {
 
-    } catch (e) {
-        console.log(e);
-    }
-})
 
 app.listen(3000, () => {
     console.log("server has started on port 3000")

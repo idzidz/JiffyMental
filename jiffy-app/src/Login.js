@@ -38,11 +38,14 @@ const Login = () => {
     }
 
     const handleSubmit = async (event) => {
+        // Stops page reload
         event.preventDefault();
 
         const { usernameValidation, passwordValidation } = document.forms[0];
         let userExists = false;
         let userType = "";
+
+        console.log(usernameValidation.value);
 
         const userData = mockDatabase.find((user) => user.username === usernameValidation.value)
 
