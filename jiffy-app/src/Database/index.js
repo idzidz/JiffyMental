@@ -81,7 +81,10 @@ app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddre
 
         console.log(toBeInserted);
 
-        const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, social_insurance_number, credit_card, home_address, email_address) VALUES ($1, $2, $3, $4, $5, $6, $7)', [toBeInserted, req.params.firstname, req.params.lastname, req.params.social, req.params.credit, req.params.homeaddress, req.params.email]);
+        const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, social_insurance_number, credit_card, home_address, email_address) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+            [toBeInserted, req.params.firstname, req.params.lastname, req.params.social, req.params.credit, req.params.homeaddress, req.params.email]);
+
+
 
         res.json("true");
 

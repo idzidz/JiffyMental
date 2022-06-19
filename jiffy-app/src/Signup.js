@@ -252,11 +252,6 @@ const Signup = () => {
                     <Col> <button onClick={handleReturnLogin} style={{width:"300px"}}> Return to Login</button></Col>
                 </Row>
 
-
-
-
-
-
             </Container>
 
         </div>
