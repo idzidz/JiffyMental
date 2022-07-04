@@ -19,19 +19,6 @@ const Login = () => {
     }
 
 
-    const mockDatabase = [
-        {
-            username: "patient01",
-            password: "password",
-            type: "patient"
-        },
-        {
-            username: "doctor01",
-            password: "password",
-            type: "doctor"
-        }
-    ]
-
     const errors = {
         usernameValidation: "invalid credentials",
         passwordValidation: "invalid credentials"
@@ -42,28 +29,27 @@ const Login = () => {
         event.preventDefault();
 
         const { usernameValidation, passwordValidation } = document.forms[0];
+        let usernameLower = usernameValidation.value.toLowerCase();
         let userExists = false;
         let userType = "";
 
         console.log(usernameValidation.value);
 
-        const userData = mockDatabase.find((user) => user.username === usernameValidation.value)
-
 
         // const timer01 = performance.now();
         // Query database to see if user exists, return appropriate response on UI
         try{
-            const url = "http://localhost:3000/api/getUser/" + usernameValidation.value + "/" + passwordValidation.value
+            const url = "http://localhost:3000/api/getUser/" + usernameLower + "/" + passwordValidation.value
             const test = await fetch(url);
             console.log(test);
 
             try{
                 const val = await test.json();
-                if (usernameValidation.value === val.username && passwordValidation.value === val.password){
+                if (usernameLower === val.username && passwordValidation.value === val.password){
                     userExists = true;
                     console.log("user exists");
                     try{
-                        const url = "http://localhost:3000/api/getUserType/" + usernameValidation.value;
+                        const url = "http://localhost:3000/api/getUserType/" + usernameLower;
                         const test = await fetch(url);
                         userType = await test.json();
                         console.log(userType);

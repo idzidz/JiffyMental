@@ -67,7 +67,7 @@ const Signup = () => {
         const { patientUsername, patientPassword, patientFirstName, patientLastName, patientAddress, patientEmail, patientCredit } = document.forms[0];
 
         try {
-            const url = "http://localhost:3000/api/createPatient/" + patientUsername.value.trim() + "/" + patientPassword.value.trim() + "/" + patientFirstName.value.trim() + "/" +
+            const url = "http://localhost:3000/api/createPatient/" + patientUsername.value.trim().toLowerCase() + "/" + patientPassword.value.trim() + "/" + patientFirstName.value.trim() + "/" +
                 patientLastName.value.trim() +  "/" + patientAddress.value.trim() +  "/" + patientEmail.value.trim() + "/" + patientCredit.value.trim();
             const val = await fetch(url, {
                 method: "POST",
@@ -103,6 +103,12 @@ const Signup = () => {
         // Stops page reload
         event.preventDefault();
         const { doctorUsername, doctorPassword, doctorFirstName, doctorLastName, doctorEmail, doctorSpecialization, doctorRate } = document.forms[0];
+
+        // try{
+        //     const url = "http://localhost:3000/api/createDoctor/" + doctorUsername.value.trim().toLowerCase() + "/" + doctorPassword.value.trim() + "/" +
+        // } catch (e) {
+        //     console.log(e);
+        // }
 
         console.log(doctorUsername.value.trim());
         console.log(doctorPassword.value);
@@ -205,11 +211,6 @@ const Signup = () => {
                     <div className="input-container">
                         <label>Appointment Rate </label>
                         <input type="text" name="doctorRate" required />
-                        {/*{renderErrorMessage("passwordValidation")}*/}
-                    </div>
-                    <div className="input-container">
-                        <label>Social Insurance Number </label>
-                        <input type="text" name="doctorSocial" required />
                         {/*{renderErrorMessage("passwordValidation")}*/}
                     </div>
                     <div className="button-container">

@@ -94,7 +94,7 @@ app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddre
 })
 
 // Creates a new Doctor row in the Doctor table.
-app.post('/api/createDoctor/:user_id/:first_name/:last_name', async (req, res) => {
+app.post('/api/createDoctor/:username/:password/:firstname/:lastname/:spec/:rate/:email', async (req, res) => {
     try {
 
     } catch (e) {
