@@ -1,4 +1,4 @@
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Dropdown} from 'react-bootstrap';
 import {useState} from "react";
 import {wait} from "@testing-library/user-event/dist/utils";
 import {useNavigate} from "react-router-dom";
@@ -12,6 +12,7 @@ const Signup = () => {
 
     const [patientVisibility, setPatientVisibility] = useState("visible");
     const [doctorVisibility, setDoctorVisibility] = useState("hidden");
+    const [doctorSpec, setDoctorSpec] = useState("Please select a specialization");
 
     const [chosenRadio, setChosenRadio] = useState("");
 
@@ -48,7 +49,7 @@ const Signup = () => {
         // todo: make the forms wipe when switching between patient and doctor radios
         // document.getElementByName("form").reset();
 
-        console.log("Radio button: " + chosenRadio);
+        console.log("Radio button: " + event.target.value);
         console.log("Patient status: " + patientVisibility);
         console.log("Doctor status: " + doctorVisibility);
 
@@ -77,15 +78,17 @@ const Signup = () => {
             try {
                 const foundVal = await val.json();
                 if (foundVal === "true"){
-                    alert("Account created successfully!");
+                    alert("Patient account created successfully!");
                 }
 
             } catch (e) {
                 console.log(e);
+                alert("Failed to create patient account");
             }
 
         } catch (e) {
             console.log("x failed: " + e);
+            alert("Failed to create patient account");
         }
 
 
@@ -104,19 +107,76 @@ const Signup = () => {
         event.preventDefault();
         const { doctorUsername, doctorPassword, doctorFirstName, doctorLastName, doctorEmail, doctorSpecialization, doctorRate } = document.forms[0];
 
-        // try{
-        //     const url = "http://localhost:3000/api/createDoctor/" + doctorUsername.value.trim().toLowerCase() + "/" + doctorPassword.value.trim() + "/" +
-        // } catch (e) {
-        //     console.log(e);
-        // }
+        if (doctorSpecialization.value === "Please select a specialization"){
+            alert("Please select a specialization by clicking on the \"Specialization\" button");
+            return;
+        }
 
-        console.log(doctorUsername.value.trim());
-        console.log(doctorPassword.value);
-        console.log(doctorFirstName.value);
-        console.log(doctorLastName.value);
-        console.log(doctorEmail.value);
-        console.log(doctorSpecialization.value);
-        console.log(doctorRate.value);
+        let spec = "";
+
+        switch(doctorSpecialization.value) {
+            case "Clinical Psychology":
+                spec = "CLINICAL_PSYCHOLOGY";
+                break;
+            case "Counselling Psychology":
+                spec = "COUNSELLING_PSYCHOLOGY";
+                break;
+            case "Forensic Psychology":
+                spec = "FORENSIC_PSYCHOLOGY";
+                break;
+            case "Health Psychology":
+                spec = "HEALTH_PSYCHOLOGY";
+                break;
+            case "Industrial Psychology":
+                spec = "INDUSTRIAL_PSYCHOLOGY";
+                break;
+            case "Organizational Psychology":
+                spec = "ORGANIZATIONAL_PSYCHOLOGY";
+                break;
+            case "Neuropsychology":
+                spec = "NEUROPSYCHOLOGY";
+                break;
+            case "Rehabilitation Psychology":
+                spec = "REHABILITATION_PSYCHOLOGY";
+                break;
+            case "School Psychology":
+                spec = "SCHOOL_PSYCHOLOGY";
+                break;
+            default:
+                break;
+        }
+
+        try{
+            const url = "http://localhost:3000/api/createDoctor/" + doctorUsername.value.trim().toLowerCase() + "/" + doctorPassword.value.trim() + "/" + doctorFirstName.value.trim() + "/" +
+                                                                    doctorLastName.value.trim() + "/" + spec + "/" + doctorRate.value.trim() + "/" + doctorEmail.value.trim();
+            const val = await fetch(url, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+            });
+
+            try {
+                const foundVal = await val.json();
+                if (foundVal === "true"){
+                    alert("Doctor account created successfully!");
+                }
+
+            } catch (e) {
+                console.log(e);
+                alert("Failed to create doctor account");
+            }
+
+        } catch (e) {
+            console.log(e);
+            alert("Failed to create doctor account");
+        }
+
+        // console.log(doctorUsername.value.trim());
+        // console.log(doctorPassword.value);
+        // console.log(doctorFirstName.value);
+        // console.log(doctorLastName.value);
+        // console.log(doctorEmail.value);
+        // console.log(doctorSpecialization.value);
+        // console.log(doctorRate.value);
 
 
     }
@@ -204,8 +264,26 @@ const Signup = () => {
                         {/*{renderErrorMessage("usernameValidation")}*/}
                     </div>
                     <div className="input-container">
-                        <label>Specialization </label>
-                        <input type="text" name="doctorSpecialization" required />
+                        {/*<label>Specialization </label>*/}
+                        <Dropdown style={{color: "red"}}>
+                            <Dropdown.Toggle variant="secondary" id="dropdown-basic">
+                                Specialization
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Clinical Psychology")}}>Clinical Psychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Counselling Psychology")}}>Counselling Psychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Forensic Psychology")}}>Forensic Psychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Health Psychology")}}>Health Psychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Industrial Psychology")}}>Industrial Psychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Organizational Psychology")}}>Organizational Psychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Neuropsychology")}}>Neuropsychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("Rehabilitation Psychology")}}>Rehabilitation Psychology</Dropdown.Item>
+                                <Dropdown.Item onClick={(event) => {return setDoctorSpec("School Psychology")}}>School Psychology</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <input type="text" disabled={true} name="doctorSpecialization" value={doctorSpec} />
                         {/*{renderErrorMessage("usernameValidation")}*/}
                     </div>
                     <div className="input-container">

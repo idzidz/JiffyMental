@@ -79,7 +79,7 @@ app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddre
         const newUserID = await pool.query('SELECT user_id FROM users where username = $1', [req.params.username]);
         const toBeInserted = newUserID.rows[0].user_id;
 
-        console.log(toBeInserted);
+        console.log("Patient ID to be inserted: " + toBeInserted);
 
         const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, credit_card, home_address, email_address) VALUES ($1, $2, $3, $4, $5, $6)',
             [toBeInserted, req.params.firstname, req.params.lastname, req.params.credit, req.params.homeaddress, req.params.email]);
@@ -94,8 +94,18 @@ app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddre
 })
 
 // Creates a new Doctor row in the Doctor table.
-app.post('/api/createDoctor/:username/:password/:firstname/:lastname/:spec/:rate/:email', async (req, res) => {
+app.post('/api/createDoctor/:username/:password/:firstname/:lastname/:spec/:payrate/:email', async (req, res) => {
     try {
+        const createUser = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.params.username, req.params.password]);
+        const newUserID = await pool.query('SELECT user_id FROM users where username = $1', [req.params.username]);
+        const toBeInserted = newUserID.rows[0].user_id;
+
+        console.log("Doctor ID to be inserted: " + toBeInserted);
+
+        const newDoctor = await pool.query('INSERT INTO doctor (user_id, first_name, last_name, specialization, appointment_rate, email_address) VALUES ($1, $2, $3, $4, $5, $6)',
+            [toBeInserted, req.params.firstname, req.params.lastname, req.params.spec, req.params.payrate, req.params.email]);
+
+        res.json("true");
 
     } catch (e) {
         console.log(e);
