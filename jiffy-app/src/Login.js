@@ -50,6 +50,7 @@ const Login = () => {
         const userData = mockDatabase.find((user) => user.username === usernameValidation.value)
 
 
+        // const timer01 = performance.now();
         // Query database to see if user exists, return appropriate response on UI
         try{
             const url = "http://localhost:3000/api/getUser/" + usernameValidation.value + "/" + passwordValidation.value
@@ -78,6 +79,8 @@ const Login = () => {
         } catch (e){
             console.log(e);
         }
+        // const timer02 = performance.now();
+        // console.log("Time to query if user exists and get user type: " + (timer02 - timer01) + " milliseconds");
 
         if (userExists){
             setIsSubmitted(true);

@@ -5,6 +5,11 @@ import {useNavigate} from "react-router-dom";
 
 const Signup = () => {
 
+    const timer01 = performance.now();
+    const timer02 = () => {
+        console.log(performance.now() - timer01);
+    }
+
     const [patientVisibility, setPatientVisibility] = useState("visible");
     const [doctorVisibility, setDoctorVisibility] = useState("hidden");
 
@@ -255,6 +260,7 @@ const Signup = () => {
             </Container>
 
         </div>
+
     )
 }
 
