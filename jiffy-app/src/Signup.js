@@ -64,11 +64,11 @@ const Signup = () => {
     const handlePatientSubmit = async (event) => {
         // Stops page reload
         event.preventDefault();
-        const { patientUsername, patientPassword, patientFirstName, patientLastName, patientAddress, patientEmail, patientSocial, patientCredit } = document.forms[0];
+        const { patientUsername, patientPassword, patientFirstName, patientLastName, patientAddress, patientEmail, patientCredit } = document.forms[0];
 
         try {
             const url = "http://localhost:3000/api/createPatient/" + patientUsername.value.trim() + "/" + patientPassword.value.trim() + "/" + patientFirstName.value.trim() + "/" +
-                patientLastName.value.trim() +  "/" + patientAddress.value.trim() +  "/" + patientEmail.value.trim() + "/" + patientSocial.value.trim() + "/" + patientCredit.value.trim();
+                patientLastName.value.trim() +  "/" + patientAddress.value.trim() +  "/" + patientEmail.value.trim() + "/" + patientCredit.value.trim();
             const val = await fetch(url, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -95,7 +95,6 @@ const Signup = () => {
         console.log(patientLastName.value);
         console.log(patientAddress.value.trim());
         console.log(patientEmail.value);
-        console.log(patientSocial.value);
         console.log(patientCredit.value);
 
     }
@@ -103,7 +102,7 @@ const Signup = () => {
     const handleDoctorSubmit = async (event) => {
         // Stops page reload
         event.preventDefault();
-        const { doctorUsername, doctorPassword, doctorFirstName, doctorLastName, doctorEmail, doctorSpecialization, doctorRate, doctorSocial } = document.forms[0];
+        const { doctorUsername, doctorPassword, doctorFirstName, doctorLastName, doctorEmail, doctorSpecialization, doctorRate } = document.forms[0];
 
         console.log(doctorUsername.value.trim());
         console.log(doctorPassword.value);
@@ -112,7 +111,6 @@ const Signup = () => {
         console.log(doctorEmail.value);
         console.log(doctorSpecialization.value);
         console.log(doctorRate.value);
-        console.log(doctorSocial.value);
 
 
     }
@@ -154,11 +152,6 @@ const Signup = () => {
                     <div className="input-container">
                         <label>Email </label>
                         <input type="text" name="patientEmail" required />
-                        {/*{renderErrorMessage("passwordValidation")}*/}
-                    </div>
-                    <div className="input-container">
-                        <label>Social Insurance Number </label>
-                        <input type="text" name="patientSocial" required />
                         {/*{renderErrorMessage("passwordValidation")}*/}
                     </div>
                     <div className="input-container">

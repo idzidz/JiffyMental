@@ -73,7 +73,7 @@ app.post('/api/createUser/:username/:password', async (req, res) => {
 })
 
 // Creates a new Patient row in the Patient table.
-app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddress/:email/:social/:credit', async (req, res) => {
+app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddress/:email/:credit', async (req, res) => {
     try {
         const createUser = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.params.username, req.params.password]);
         const newUserID = await pool.query('SELECT user_id FROM users where username = $1', [req.params.username]);
@@ -81,8 +81,8 @@ app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddre
 
         console.log(toBeInserted);
 
-        const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, social_insurance_number, credit_card, home_address, email_address) VALUES ($1, $2, $3, $4, $5, $6, $7)',
-            [toBeInserted, req.params.firstname, req.params.lastname, req.params.social, req.params.credit, req.params.homeaddress, req.params.email]);
+        const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, credit_card, home_address, email_address) VALUES ($1, $2, $3, $4, $5, $6)',
+            [toBeInserted, req.params.firstname, req.params.lastname, req.params.credit, req.params.homeaddress, req.params.email]);
 
 
 
