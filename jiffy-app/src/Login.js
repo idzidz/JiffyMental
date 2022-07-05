@@ -52,7 +52,9 @@ const Login = () => {
                         const url = "http://localhost:3000/api/getUserType/" + usernameLower;
                         const test = await fetch(url);
                         userType = await test.json();
-                        console.log(userType);
+                        localStorage.setItem("userType", userType);
+                        localStorage.setItem("userID", val.user_id);
+                        localStorage.setItem("username", val.username);
                     }catch(e){
                         console.log("Failed to get user type: " + e);
                     }
@@ -72,6 +74,7 @@ const Login = () => {
             setIsSubmitted(true);
             if (userType === "patient"){
                 navigate("../patient")
+                // this.props.push("../patient");
             }else if (userType === "doctor"){
                 navigate("../doctor")
             }else{

@@ -53,6 +53,22 @@ app.get('/api/getUserType/:username', async (req, res) => {
     }
 })
 
+app.get('/api/getUserDetails/:userID/:userType', async (req, res) => {
+try {
+        if (req.params.userType === "doctor"){
+            const db = await pool.query('SELECT * FROM users JOIN doctor ON users.user_id = doctor.user_id WHERE users.user_id = $1', [req.params.userID]);
+            res.json(db.rows[0]);
+        }else if (req.params.userType === "patient"){
+            const db = await pool.query('SELECT * FROM users JOIN patient ON users.user_id = patient.user_id WHERE users.user_id = $1', [req.params.userID]);
+            res.json(db.rows[0]);
+        }else{
+            res.json("ERROR: User not found");
+        }
+    } catch (e) {
+        console.log(e);
+    }
+})
+
 // SETTERS
 //
 //
