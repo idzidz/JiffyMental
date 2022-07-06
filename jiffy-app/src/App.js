@@ -11,6 +11,7 @@ import PHQ9 from './PHQ9';
 import Crisis from './Crisis';
 import Recovery from './Recovery';
 import Signup from './Signup';
+import MyAccount from './MyAccount';
 import {Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 <Route path="/crisis" element={<Crisis></Crisis>} />
                 <Route path="/forgotPwd" element={<Recovery></Recovery>} />
                 <Route path="/signup" element={<Signup></Signup>} />
+                <Route path="/myAccount" element={<MyAccount></MyAccount>} />
             </Routes>
 
             {/*todo:   1. Create the 3 "eh" buttons on patient page + skip button*/}
