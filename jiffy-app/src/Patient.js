@@ -16,11 +16,13 @@ const Patient = () => {
         email_address: ""
     });
 
-    const testStorage = () => {
-        console.log("Testing storage")
-        console.log(localStorage);
-        console.log(localStorage.getItem("userType"));
-    }
+    const navigate = useNavigate();
+
+    // const testStorage = () => {
+    //     console.log("Testing storage")
+    //     console.log(localStorage);
+    //     console.log(localStorage.getItem("userType"));
+    // }
 
     useEffect(() => {
         async function getUserDetails() {
@@ -53,7 +55,20 @@ const Patient = () => {
         <Container>
             <Row>
                 <Col>
+
                     <h4 className="subText">Welcome {user.first_name}</h4>
+                    <h4 className="subText">Your information is as follows: <br /><br />
+                    Account Type: {localStorage.getItem("userType")}<br />
+                    Username: {user.username} <br />
+                    Password: {user.password} <br />
+                    User ID: {user.user_id} <br />
+                    First Name: {user.first_name} <br />
+                    Last Name: {user.last_name} <br />
+                    Credit Card: {user.credit_card} <br />
+                    Home Address: {user.home_address} <br />
+                    Email Address: {user.email_address} <br />
+                    </h4>
+
                 </Col>
             </Row>
         </Container>
@@ -64,7 +79,8 @@ const Patient = () => {
 
     return(
         <div>
-            {localStorage.length != 0 && (localStorage.getItem("userType") === "patient") ? renderPatientPage : <h4 className="subText">Please log in</h4>}
+            {localStorage.length != 0 && (localStorage.getItem("userType") === "patient") ? renderPatientPage :
+            (localStorage.length != 0 && (localStorage.getItem("userType") === "doctor") ? navigate("../doctor") : navigate("../login"))}
         </div>
 
 

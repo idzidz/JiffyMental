@@ -2,12 +2,12 @@ import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {useNavigate} from "react-router-dom";
 import {Container, Row, Col} from 'react-bootstrap';
+import {useHref} from "react-router";
 
 
 const Login = () => {
 
     const [errorMessage, setErrorMessage] = useState({});
-    const [isSubmitted, setIsSubmitted] = useState(false);
     const navigate = useNavigate();
 
     const handleSignup = () => {
@@ -71,12 +71,14 @@ const Login = () => {
         // console.log("Time to query if user exists and get user type: " + (timer02 - timer01) + " milliseconds");
 
         if (userExists){
-            setIsSubmitted(true);
             if (userType === "patient"){
-                navigate("../patient")
+                window.location.href="/patient";
+                // window.location.reload();
+                // navigate("../patient")
                 // this.props.push("../patient");
             }else if (userType === "doctor"){
-                navigate("../doctor")
+                window.location.href="/doctor";
+                // navigate("../doctor")
             }else{
                 navigate("../error")
             }
@@ -111,9 +113,12 @@ const Login = () => {
 
     return (
         <div className="login">
+
             <div className="login-form">
+                {/*Login page not accessible once logged in*/}
+                {localStorage.length === 0 ? null : (localStorage.getItem("userType") === "patient" ? window.location.href="/patient" : window.location.href="/doctor")}
                 <div className="title">Log in</div>
-                {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+                {renderForm}
             </div>
 
             <Container style={{textAlign: "center"}}>
