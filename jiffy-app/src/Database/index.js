@@ -21,7 +21,7 @@ app.get('/api/getUser/:username/:password', async (req, res) => {
     } catch (err) {
         console.log(err);
     }
-})
+});
 
 // Fetches user type using given username.
 // This API can only be called once it has been confirmed that the user exists.
@@ -51,7 +51,7 @@ app.get('/api/getUserType/:username', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
-})
+});
 
 app.get('/api/getUserDetails/:userID/:userType', async (req, res) => {
 try {
@@ -67,7 +67,7 @@ try {
     } catch (e) {
         console.log(e);
     }
-})
+});
 
 // SETTERS
 //
@@ -86,7 +86,7 @@ app.post('/api/createUser/:username/:password', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
-})
+});
 
 // Creates a new Patient row in the Patient table.
 app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddress/:email/:credit', async (req, res) => {
@@ -107,7 +107,7 @@ app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddre
     } catch (e) {
         console.log(e);
     }
-})
+});
 
 // Creates a new Doctor row in the Doctor table.
 app.post('/api/createDoctor/:username/:password/:firstname/:lastname/:spec/:payrate/:email', async (req, res) => {
@@ -126,7 +126,42 @@ app.post('/api/createDoctor/:username/:password/:firstname/:lastname/:spec/:payr
     } catch (e) {
         console.log(e);
     }
-})
+});
+
+// MODIFIERS
+//
+//
+
+// Change a users password
+app.put('/api/changePassword/:user_id/:password', async (req, res) => {
+    try {
+        const db = await pool.query('UPDATE users SET password = $1 WHERE user_id = $2', [req.params.password, req.params.user_id]);
+
+        res.json("password changed to " + req.params.password);
+
+    } catch(e) {
+        console.log("Caught error: " + e);
+    }
+});
+
+// Change a users email address
+app.put('/api/changeEmail/:user_id/:accountType/:email', async (req, res) => {
+    try {
+        if (req.params.accountType === "doctor") {
+            const db = await pool.query('UPDATE doctor SET email_address = $1 WHERE user_id = $2', [req.params.email, req.params.user_id]);
+            res.json("email changed to " + req.params.email);
+        } else if (req.params.accountType === "patient") {
+            const db = await pool.query('UPDATE patient SET email_address = $1 WHERE user_id = $2', [req.params.email, req.params.user_id]);
+            res.json("email changed to " + req.params.email);
+        } else {
+            res.json("ERROR: User not found");
+        }
+
+    } catch (e) {
+        console.log("Caught error: " + e);
+    }
+});
+
 
 
 
