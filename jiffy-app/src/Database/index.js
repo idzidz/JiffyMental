@@ -6,7 +6,7 @@ const pool = require('../Database');
 app.use(cors());
 app.use(express.json());
 
-//GETTERS
+//GET
 //
 //
 
@@ -84,7 +84,40 @@ app.get('/api/getUserDetails/:userID/:userType', async (req, res) => {
     }
 });
 
-// SETTERS
+// Get all appointment requests using a given patient ID. Appointment requests only have a patient associated to them until a doctor accept it.
+app.get('/api/getAllAppointmentRequestsPatient/:patientUserID', async (req, res) => {
+    try {
+        const db = await pool.query('SELECT * FROM appointmentrequests WHERE patient_user_id = $1', [req.params.patientUserID]);
+        res.json(db.rows);
+    } catch (e) {
+        console.log("Error caught: " + e);
+        res.json(false);
+    }
+});
+
+// Get all appointments using a given Patient ID.
+app.get('/api/getAllAppointmentsPatient/:patientUserID', async (req, res) => {
+    try {
+        const db = await pool.query('SELECT * FROM appointment WHERE patient_user_id = $1', [req.params.patientUserID]);
+        res.json(db.rows);
+    } catch (e) {
+        console.log("Error caught: " + e);
+        res.json(false);
+    }
+});
+
+// Get all appointments using a given Doctor ID.
+app.get('/api/getAllAppointmentsDoctor/:doctorUserID', async (req, res) => {
+    try {
+        const db = await pool.query('SELECT * FROM appointment WHERE doctor_user_id = $1', [req.params.doctorUserID]);
+        res.json(db.rows);
+    } catch (e) {
+        console.log("Error caught: " + e);
+        res.json(false);
+    }
+});
+
+// POST
 //
 //
 
@@ -143,7 +176,33 @@ app.post('/api/createDoctor/:username/:password/:firstname/:lastname/:spec/:payr
     }
 });
 
-// MODIFIERS
+// Creates a new Appointment Request. These are made only by patients.
+app.post('/api/createAppointmentRequest/:patientID/:aptDate/:startTime/:endTime/:commMethod/:reqDesc/:reqStatus', async (req, res) => {
+    try {
+        const createAppointmentRequest = await pool.query('INSERT INTO appointmentrequests (patient_user_id, appointment_date, start_time, end_time, communication_method, request_description, appointment_request_status) VALUES ($1, $2, $3, $4, $5, $6, $7)',
+            [req.params.patientID, req.params.aptDate, req.params.startTime, req.params.endTime, req.params.commMethod, req.params.reqDesc, req.params.reqStatus]);
+        res.json(true);
+    } catch (e) {
+        console.log("Caught error: " + e);
+        res.json(false);
+    }
+});
+
+// Creates a new Appointment. These are made by doctors accepting a patient appointment request.
+// Request description is lost here. Can send it as part of the email to the doctor.
+app.post('/api/createAppointment/:patientID/:doctorID/:aptDate/:startTime/:endTime/:commMethod/:hourlyCost/:aptStatus', async (req, res) => {
+   try {
+       const createAppoint = await pool.query('INSERT INTO appointment (patient_user_id, doctor_user_id, appointment_date, start_time, end_time, communication_method, appointment_hourly_cost, appointment_status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
+           [req.params.patientID, req.params.doctorID, req.params.aptDate, req.params.startTime, req.params.endTime, req.params.commMethod, req.params.hourlyCost, req.params.aptStatus]);
+       res.json(true);
+   } catch (e) {
+       console.log("Caught error: " + e);
+       res.json(false);
+   }
+});
+
+
+// PUT
 //
 //
 

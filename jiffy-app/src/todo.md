@@ -14,4 +14,5 @@ todo:
     * Request an appointment (Add all constraints + time + cost(?)
     * Track health (Optional bonus, display stats on eating/sleeping habits)
 11 - Sanitize doctor account creation (Appointment rate can be a non-numeric value at the moment)
-~~12 - Email_address should have been a part of the users table to deny the possibility of duplicate emails in patient and doctor tables.~~
+~~12 - Email_address should have been a part of the users table to deny the possibility of duplicate emails in patient and doctor tables.~~\
+13 - Daily script that runs once a new day begins. This script needs to check if any appointments have become expired, for example.

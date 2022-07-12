@@ -8,33 +8,34 @@ CREATE TYPE appointment_status_enum AS ENUM ('UPCOMING', 'CANCELLED', 'ABSENT', 
 CREATE TABLE Users (
     user_id SERIAL PRIMARY KEY,
     username TEXT UNIQUE NOT NULL,
-    password TEXT NOT NULL
+    password TEXT NOT NULL,
+    email_address TEXT UNIQUE NOT NULL CONSTRAINT valid_email_address CHECK (email_address ~ '^[A-Za-z0-9]+@[A-Za-z0-9]+[.][A-Za-z]+$')
 );
 
 CREATE TABLE Doctor (
     user_id INTEGER PRIMARY KEY REFERENCES Users(user_id),
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
-    social_insurance_number TEXT UNIQUE NOT NULL CONSTRAINT valid_SIN CHECK (social_insurance_number ~ '^(\d{9})$'),
+--     social_insurance_number TEXT UNIQUE NOT NULL CONSTRAINT valid_SIN CHECK (social_insurance_number ~ '^(\d{9})$'),
     specialization specialization_enum NOT NULL,
     appointment_rate NUMERIC(16, 2) NOT NULL CONSTRAINT valid_rate CHECK (appointment_rate >= 100),
-    email_address TEXT UNIQUE NOT NULL CONSTRAINT valid_email_address CHECK (email_address ~ '^[A-Za-z0-9]+@[A-Za-z0-9]+[.][A-Za-z]+$')
+--     email_address TEXT UNIQUE NOT NULL CONSTRAINT valid_email_address CHECK (email_address ~ '^[A-Za-z0-9]+@[A-Za-z0-9]+[.][A-Za-z]+$')
 );
 
 CREATE TABLE Patient (
     user_id INTEGER PRIMARY KEY REFERENCES Users(user_id),
     first_name TEXT NOT NULL,
     last_name TEXT NOT NULL,
-    social_insurance_number TEXT UNIQUE NOT NULL CONSTRAINT valid_SIN CHECK (social_insurance_number ~ '^(\d{9})$'),
+--     social_insurance_number TEXT UNIQUE NOT NULL CONSTRAINT valid_SIN CHECK (social_insurance_number ~ '^(\d{9})$'),
     credit_card TEXT NOT NULL CONSTRAINT valid_credit_card CHECK (credit_card ~ '^\d{4}-\d{4}-\d{4}-\d{4}$'),
     home_address TEXT NOT NULL,
-    email_address TEXT UNIQUE NOT NULL CONSTRAINT valid_email_address CHECK (email_address ~ '^[A-Za-z0-9]+@[A-Za-z0-9]+[.][A-Za-z]+$')
+--     email_address TEXT UNIQUE NOT NULL CONSTRAINT valid_email_address CHECK (email_address ~ '^[A-Za-z0-9]+@[A-Za-z0-9]+[.][A-Za-z]+$')
 );
 
 CREATE TABLE AppointmentRequests (
     request_id SERIAL PRIMARY KEY,
     patient_user_id INTEGER NOT NULL,
-    doctor_user_id INTEGER NOT NULL,
+--     doctor_user_id INTEGER NOT NULL,
     appointment_date DATE NOT NULL,
     start_time TIME NOT NULL,
     end_time TIME NOT NULL,
@@ -42,7 +43,7 @@ CREATE TABLE AppointmentRequests (
     request_description TEXT,
     appointment_request_status appointment_request_status_enum NOT NULL,
     FOREIGN KEY (patient_user_id) REFERENCES Patient(user_id),
-    FOREIGN KEY (doctor_user_id) REFERENCES Doctor(user_id)
+--     FOREIGN KEY (doctor_user_id) REFERENCES Doctor(user_id)
 );
 
 CREATE TABLE Appointment (
