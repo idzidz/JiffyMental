@@ -10,6 +10,7 @@ app.use(express.json());
 //
 //
 
+
 // Attempts to fetch user using given username and password.
 app.get('/api/getUser/:username/:password', async (req, res) => {
     try {
@@ -20,6 +21,19 @@ app.get('/api/getUser/:username/:password', async (req, res) => {
 
     } catch (err) {
         console.log(err);
+    }
+});
+
+// Given an email, checks if a user with the associated email exists.
+// If it exists, emails the user what their password is.
+app.get('/api/forgotPassword/:email', async (req, res) => {
+    try {
+        const db01 = await pool.query('SELECT * FROM users where email_address = $1', [req.params.email]);
+
+        db01.rows.length > 0 ? res.json(db01.rows[0].password) : res.json(false);
+
+    } catch (e) {
+        console.log("Error caught: " + e);
     }
 });
 
@@ -53,15 +67,16 @@ app.get('/api/getUserType/:username', async (req, res) => {
     }
 });
 
+// Given a userID and the type of user, we return all information about the user.
 app.get('/api/getUserDetails/:userID/:userType', async (req, res) => {
-try {
-        if (req.params.userType === "doctor"){
+    try {
+        if (req.params.userType === "doctor") {
             const db = await pool.query('SELECT * FROM users JOIN doctor ON users.user_id = doctor.user_id WHERE users.user_id = $1', [req.params.userID]);
             res.json(db.rows[0]);
-        }else if (req.params.userType === "patient"){
+        } else if (req.params.userType === "patient") {
             const db = await pool.query('SELECT * FROM users JOIN patient ON users.user_id = patient.user_id WHERE users.user_id = $1', [req.params.userID]);
             res.json(db.rows[0]);
-        }else{
+        } else {
             res.json("ERROR: User not found");
         }
     } catch (e) {
@@ -91,14 +106,14 @@ app.post('/api/createUser/:username/:password', async (req, res) => {
 // Creates a new Patient row in the Patient table.
 app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddress/:email/:credit', async (req, res) => {
     try {
-        const createUser = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.params.username, req.params.password]);
+        const createUser = await pool.query('INSERT INTO users (username, password, email_address) VALUES ($1, $2, $3)', [req.params.username, req.params.password, req.params.email]);
         const newUserID = await pool.query('SELECT user_id FROM users where username = $1', [req.params.username]);
         const toBeInserted = newUserID.rows[0].user_id;
 
         console.log("Patient ID to be inserted: " + toBeInserted);
 
-        const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, credit_card, home_address, email_address) VALUES ($1, $2, $3, $4, $5, $6)',
-            [toBeInserted, req.params.firstname, req.params.lastname, req.params.credit, req.params.homeaddress, req.params.email]);
+        const newPatient = await pool.query('INSERT into patient (user_id, first_name, last_name, credit_card, home_address) VALUES ($1, $2, $3, $4, $5)',
+            [toBeInserted, req.params.firstname, req.params.lastname, req.params.credit, req.params.homeaddress]);
 
 
 
@@ -112,14 +127,14 @@ app.post('/api/createPatient/:username/:password/:firstname/:lastname/:homeaddre
 // Creates a new Doctor row in the Doctor table.
 app.post('/api/createDoctor/:username/:password/:firstname/:lastname/:spec/:payrate/:email', async (req, res) => {
     try {
-        const createUser = await pool.query('INSERT INTO users (username, password) VALUES ($1, $2)', [req.params.username, req.params.password]);
+        const createUser = await pool.query('INSERT INTO users (username, password, email_address) VALUES ($1, $2, $3)', [req.params.username, req.params.password, req.params.email]);
         const newUserID = await pool.query('SELECT user_id FROM users where username = $1', [req.params.username]);
         const toBeInserted = newUserID.rows[0].user_id;
 
         console.log("Doctor ID to be inserted: " + toBeInserted);
 
-        const newDoctor = await pool.query('INSERT INTO doctor (user_id, first_name, last_name, specialization, appointment_rate, email_address) VALUES ($1, $2, $3, $4, $5, $6)',
-            [toBeInserted, req.params.firstname, req.params.lastname, req.params.spec, req.params.payrate, req.params.email]);
+        const newDoctor = await pool.query('INSERT INTO doctor (user_id, first_name, last_name, specialization, appointment_rate) VALUES ($1, $2, $3, $4, $5)',
+            [toBeInserted, req.params.firstname, req.params.lastname, req.params.spec, req.params.payrate]);
 
         res.json("true");
 
@@ -145,17 +160,20 @@ app.put('/api/changePassword/:user_id/:password', async (req, res) => {
 });
 
 // Change a users email address
-app.put('/api/changeEmail/:user_id/:accountType/:email', async (req, res) => {
+app.put('/api/changeEmail/:user_id/:email', async (req, res) => {
     try {
-        if (req.params.accountType === "doctor") {
-            const db = await pool.query('UPDATE doctor SET email_address = $1 WHERE user_id = $2', [req.params.email, req.params.user_id]);
-            res.json("email changed to " + req.params.email);
-        } else if (req.params.accountType === "patient") {
-            const db = await pool.query('UPDATE patient SET email_address = $1 WHERE user_id = $2', [req.params.email, req.params.user_id]);
-            res.json("email changed to " + req.params.email);
-        } else {
-            res.json("ERROR: User not found");
-        }
+        const db = await pool.query('UPDATE users SET email_address = $1 WHERE user_id = $2', [req.params.email, req.params.user_id]);
+        // if (req.params.accountType === "doctor") {
+        //     const db = await pool.query('UPDATE doctor SET email_address = $1 WHERE user_id = $2', [req.params.email, req.params.user_id]);
+        //     res.json("email changed to " + req.params.email);
+        // } else if (req.params.accountType === "patient") {
+        //     const db = await pool.query('UPDATE patient SET email_address = $1 WHERE user_id = $2', [req.params.email, req.params.user_id]);
+        //     res.json("email changed to " + req.params.email);
+        // } else {
+        //     res.json("ERROR: User not found");
+        // }
+
+        res.json("email changed to " + req.params.email);
 
     } catch (e) {
         console.log("Caught error: " + e);
@@ -166,5 +184,5 @@ app.put('/api/changeEmail/:user_id/:accountType/:email', async (req, res) => {
 
 
 app.listen(3000, () => {
-    console.log("server has started on port 3000")
+    console.log("server has started on port 3000");
 });

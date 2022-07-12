@@ -28,6 +28,8 @@ const Login = () => {
         // Stops page reload
         event.preventDefault();
 
+        console.log("Here: " + process.env);
+
         const { usernameValidation, passwordValidation } = document.forms[0];
         let usernameLower = usernameValidation.value.toLowerCase();
         let userExists = false;

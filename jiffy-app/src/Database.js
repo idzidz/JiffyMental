@@ -1,11 +1,12 @@
 const Pool = require('pg').Pool;
+const credentials = require('../credentials.json');
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
 const pool = new Pool({
-    host: "ec2-54-158-247-210.compute-1.amazonaws.com",
+    host: credentials.database.host,
     port: 5432,
-    user: "cfpvsyppewaxza",
-    password: "f138d7b391e513d3ce8a07c6ee3ee231b80ad5ff7ed0cdfec3cd45e05d165d6c",
-    database: "dfva7bred9s76",
+    user: credentials.database.user,
+    password: credentials.database.password,
+    database: credentials.database.database,
     rejectUnauthorized: false,
     strictSSL: false,
     ssl: true,
