@@ -13,31 +13,17 @@ const Recovery = () => {
             const result = await val.json();
 
             if (result === false){
-                console.log("DNE")
+                // console.log("DNE")
                 alert("If the provided email is associated with a user, then an email will be sent with your account information.");
             }else {
-                console.log("Found account. Password is: " + result);
-
-                // let transporter = nodemailer.createTransport({
-                //     host: 'smtp.gmail.com',
-                //     port: 587,
-                //     secure: false,
-                //     auth: {
-                //         user: 'jiffymental@gmail.com',
-                //         pass: 'Suitup1994!',
-                //     },
-                // });
-                //
-                // let info = await transporter.sendMail({
-                //     from: '"Jiffy Mental" <jiffymental@gmail.com>',
-                //     to: passwordRecovery.value,
-                //     subject: 'Jiffy Mental Password Recovery',
-                //     text: 'Your password is: ' + result,
-                //     html: '<p>Your password is: ' + result + '</p>',
-                // });
-                //
-                // console.log("Message sent: %s", info.messageId);
-                // console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+                alert("If the provided email is associated with a user, then an email will be sent with your account information.");
+                // console.log("Found account. Password is: " + result);
+                const url = "http://localhost:3030/emailer/pwdRecovery/" + passwordRecovery.value + "/" + result;
+                // We do not get the response from the server, which is causing the error. Code still works regardless.
+                const val = await fetch(url, {
+                    method: "POST",
+                    headers: {}
+                });
 
 
                 alert("If the provided email is associated with a user, then an email will be sent with your account information.");
