@@ -1,8 +1,8 @@
 todo:
 
 ~~01 - Proper error handling when user inputs invalid data during signup (Such as an email address not containing only the values stated in SQL statement)~~
-02 - Adjust API calls when preparing to host the website (Currently they call off localhost:3000)
-03 - Add emailer for signup/recovery/appointment accepted confirmation
+~~02 - Adjust API calls when preparing to host the website (Currently they call off localhost:3000)~~
+~~03 - Add emailer for signup/recovery/appointment accepted confirmation~~
 ~~04 - Create a link between doctor and patient on their landing pages using uber-like system~~
 ~~05 - Make sure that the login page isn't accessible when a user is logged in already~~
 ~~06 - Add login/logout dynamic button on navbar~~

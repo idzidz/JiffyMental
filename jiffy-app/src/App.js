@@ -1,3 +1,4 @@
+import {Routes, Route} from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
 import BriefQ from './BriefQ';
@@ -12,7 +13,11 @@ import Crisis from './Crisis';
 import Recovery from './Recovery';
 import Signup from './Signup';
 import MyAccount from './MyAccount';
-import {Routes, Route} from 'react-router-dom';
+import MyAppointments from './MyAppointments';
+import ChangeEmail from './ChangeEmail';
+import ChangePwd from './ChangePwd';
+
+
 
 function App() {
 
@@ -33,6 +38,9 @@ function App() {
                 <Route path="/forgotPwd" element={<Recovery></Recovery>} />
                 <Route path="/signup" element={<Signup></Signup>} />
                 <Route path="/myAccount" element={<MyAccount></MyAccount>} />
+                <Route path="/myAppointments" element={<MyAppointments></MyAppointments>} />
+                <Route path="/changeEmail" element={<ChangeEmail></ChangeEmail>} />
+                <Route path="/changePassword" element={<ChangePwd></ChangePwd>} />
             </Routes>
 
             {/*todo:   1. Create the 3 "eh" buttons on patient page + skip button*/}

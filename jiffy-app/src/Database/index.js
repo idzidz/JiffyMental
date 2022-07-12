@@ -152,7 +152,7 @@ app.put('/api/changePassword/:user_id/:password', async (req, res) => {
     try {
         const db = await pool.query('UPDATE users SET password = $1 WHERE user_id = $2', [req.params.password, req.params.user_id]);
 
-        res.json("password changed to " + req.params.password);
+        res.json(true);
 
     } catch(e) {
         console.log("Caught error: " + e);
@@ -173,7 +173,7 @@ app.put('/api/changeEmail/:user_id/:email', async (req, res) => {
         //     res.json("ERROR: User not found");
         // }
 
-        res.json("email changed to " + req.params.email);
+        res.json(true);
 
     } catch (e) {
         console.log("Caught error: " + e);
