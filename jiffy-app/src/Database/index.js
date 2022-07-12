@@ -190,6 +190,7 @@ app.post('/api/createAppointmentRequest/:patientID/:aptDate/:startTime/:endTime/
 
 // Creates a new Appointment. These are made by doctors accepting a patient appointment request.
 // Request description is lost here. Can send it as part of the email to the doctor.
+// The associated appointment request should be deleted at this point. Can pass the request ID here to delete it after using it.
 app.post('/api/createAppointment/:patientID/:doctorID/:aptDate/:startTime/:endTime/:commMethod/:hourlyCost/:aptStatus', async (req, res) => {
    try {
        const createAppoint = await pool.query('INSERT INTO appointment (patient_user_id, doctor_user_id, appointment_date, start_time, end_time, communication_method, appointment_hourly_cost, appointment_status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
