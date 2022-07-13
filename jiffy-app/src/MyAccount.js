@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {useNavigate, Link} from "react-router-dom";
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row, Col, Card} from 'react-bootstrap';
 import {useHref} from "react-router";
 
 

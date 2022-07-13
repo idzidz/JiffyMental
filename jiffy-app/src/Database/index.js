@@ -85,9 +85,9 @@ app.get('/api/getUserDetails/:userID/:userType', async (req, res) => {
 });
 
 // Get all appointment requests using a given patient ID. Appointment requests only have a patient associated to them until a doctor accept it.
-app.get('/api/getAllAppointmentRequestsPatient/:patientUserID', async (req, res) => {
+app.get('/api/getAppointmentRequestsPatient/:patientUserID', async (req, res) => {
     try {
-        const db = await pool.query('SELECT * FROM appointmentrequests WHERE patient_user_id = $1', [req.params.patientUserID]);
+        const db = await pool.query('SELECT * FROM appointmentrequests JOIN patient ON patient_user_id = user_id WHERE patient_user_id = $1', [req.params.patientUserID]);
         res.json(db.rows);
     } catch (e) {
         console.log("Error caught: " + e);
@@ -96,9 +96,9 @@ app.get('/api/getAllAppointmentRequestsPatient/:patientUserID', async (req, res)
 });
 
 // Get all appointments using a given Patient ID.
-app.get('/api/getAllAppointmentsPatient/:patientUserID', async (req, res) => {
+app.get('/api/getAppointmentPatient/:patientUserID', async (req, res) => {
     try {
-        const db = await pool.query('SELECT * FROM appointment WHERE patient_user_id = $1', [req.params.patientUserID]);
+        const db = await pool.query('SELECT * FROM appointment JOIN doctor ON doctor_user_id = user_id WHERE patient_user_id = $1', [req.params.patientUserID]);
         res.json(db.rows);
     } catch (e) {
         console.log("Error caught: " + e);
@@ -107,9 +107,9 @@ app.get('/api/getAllAppointmentsPatient/:patientUserID', async (req, res) => {
 });
 
 // Get all appointments using a given Doctor ID.
-app.get('/api/getAllAppointmentsDoctor/:doctorUserID', async (req, res) => {
+app.get('/api/getAppointmentDoctor/:doctorUserID', async (req, res) => {
     try {
-        const db = await pool.query('SELECT * FROM appointment WHERE doctor_user_id = $1', [req.params.doctorUserID]);
+        const db = await pool.query('SELECT * FROM appointment JOIN patient ON patient_user_id = user_id WHERE doctor_user_id = $1', [req.params.doctorUserID]);
         res.json(db.rows);
     } catch (e) {
         console.log("Error caught: " + e);
