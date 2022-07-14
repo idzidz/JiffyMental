@@ -56,8 +56,11 @@ const MyAppointments = () => {
         console.log(userInfo);
     }
 
-
-
+    const noRequests = (
+        <div>
+            <h4 className="subText" style={{paddingTop:"50px"}}>You have no appointments or requests at the moment!</h4>
+        </div>
+    )
 
     const renderForm = (
         <div>
@@ -69,6 +72,7 @@ const MyAppointments = () => {
         <div>
 
             {localStorage.length === 0 ? window.location.href = "/login" : null}
+            {doctorApt.length === 0 && patientApt.length === 0 && aptRequests.length === 0 ? noRequests : null}
 
             {doctorApt.map((docApt, index) => (
                 <Card key={index} style={{

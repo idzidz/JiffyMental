@@ -107,14 +107,14 @@ const Signup = () => {
         event.preventDefault();
         const { doctorUsername, doctorPassword, doctorFirstName, doctorLastName, doctorEmail, doctorSpecialization, doctorRate } = document.forms[0];
 
-        if (doctorSpecialization.value === "Select a specialization"){
+        if (doctorSpec === "Select a specialization"){
             alert("Please select a specialization by clicking on the \"Specialization\" button");
             return;
         }
 
         let spec = "";
 
-        switch(doctorSpecialization.value) {
+        switch(doctorSpec) {
             case "Clinical Psychology":
                 spec = "CLINICAL_PSYCHOLOGY";
                 break;
@@ -268,7 +268,7 @@ const Signup = () => {
                         {/*<label>Specialization </label>*/}
                         <Dropdown style={{color: "red"}}>
                             <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                                Specialization
+                                {doctorSpec}
                             </Dropdown.Toggle>
 
                             <Dropdown.Menu>
@@ -302,8 +302,6 @@ const Signup = () => {
                             </Dropdown.Menu>
                         </Dropdown>
 
-                        <input type="text" disabled={true} name="doctorSpecialization" value={doctorSpec}/>
-                        {/*{renderErrorMessage("usernameValidation")}*/}
                     </div>
                     <div className="input-container">
                         <label>Appointment Rate </label>
