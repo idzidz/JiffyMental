@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import ReactDOM from "react-dom";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {Container, Row, Col} from 'react-bootstrap';
 
 const Patient = () => {
@@ -54,23 +54,37 @@ const Patient = () => {
     const renderPatientPage = (
         <Container>
             <Row>
+                <h2 className="headerText">Welcome {user.first_name}!</h2>
+            </Row>
+            <Row>
+                <h2 className="headerText" style={{paddingBottom:"50px"}}>Click on any of the buttons below to proceed</h2>
+            </Row>
+
+
+            <Row style={{textAlign:"center", paddingBottom:"50px"}}>
                 <Col>
-
-                    <h4 className="subText">Welcome {user.first_name}</h4>
-                    <h4 className="subText">Your information is as follows: <br /><br />
-                    Account Type: {localStorage.getItem("userType")}<br />
-                    Username: {user.username} <br />
-                    Password: {user.password} <br />
-                    User ID: {user.user_id} <br />
-                    First Name: {user.first_name} <br />
-                    Last Name: {user.last_name} <br />
-                    Credit Card: {user.credit_card} <br />
-                    Home Address: {user.home_address} <br />
-                    Email Address: {user.email_address} <br />
-                    </h4>
-
+                    <Link to="../createRequest">
+                        <button style={{width: "300px", height:"75px"}}>Create an appointment request</button>
+                    </Link>
                 </Col>
             </Row>
+
+            <Row style={{textAlign:"center", paddingBottom:"50px"}}>
+                <Col>
+                    <Link to="../myAppointments">
+                        <button style={{width: "300px", height:"75px"}}>View all of my requests and appointments</button>
+                    </Link>
+                </Col>
+            </Row>
+
+            <Row style={{textAlign:"center", paddingBottom:"50px"}}>
+                <Col>
+                    <Link to="../myHealth">
+                        <button style={{width: "300px", height:"75px"}}>Track my health</button>
+                    </Link>
+                </Col>
+            </Row>
+
         </Container>
 
     )

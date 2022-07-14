@@ -10,6 +10,17 @@ app.use(express.json());
 //
 //
 
+// Gets all User data given a user ID
+app.get('/api/getUserInfo/:userID', async (req, res) => {
+    try{
+        const db = await pool.query('SELECT * FROM users WHERE user_id = $1', [req.params.userID]);
+        res.json(db.rows[0]);
+    } catch (e) {
+        console.log("Caught error: " + e);
+        res.json("Error: " + e);
+    }
+})
+
 
 // Attempts to fetch user using given username and password.
 app.get('/api/getUser/:username/:password', async (req, res) => {
@@ -82,7 +93,17 @@ app.get('/api/getUserDetails/:userID/:userType', async (req, res) => {
     } catch (e) {
         console.log(e);
     }
-});
+})
+
+// Get all appointment requests for Doctor page viewing
+app.get('/api/getAllAppointmentRequests', async (req, res) => {
+    try {
+        const db = await pool.query('SELECT * FROM appointmentrequests JOIN patient ON appointmentrequests.patient_user_id = patient.user_id');
+        res.json(db.rows);
+    } catch (e) {
+        console.log("Caught error: " + e);
+    }
+})
 
 // Get all appointment requests using a given patient ID. Appointment requests only have a patient associated to them until a doctor accept it.
 app.get('/api/getAppointmentRequestsPatient/:patientUserID', async (req, res) => {
@@ -116,6 +137,8 @@ app.get('/api/getAppointmentDoctor/:doctorUserID', async (req, res) => {
         res.json(false);
     }
 });
+
+
 
 // POST
 //
@@ -191,10 +214,11 @@ app.post('/api/createAppointmentRequest/:patientID/:aptDate/:startTime/:endTime/
 // Creates a new Appointment. These are made by doctors accepting a patient appointment request.
 // Request description is lost here. Can send it as part of the email to the doctor.
 // The associated appointment request should be deleted at this point. Can pass the request ID here to delete it after using it.
-app.post('/api/createAppointment/:patientID/:doctorID/:aptDate/:startTime/:endTime/:commMethod/:hourlyCost/:aptStatus', async (req, res) => {
+app.post('/api/createAppointment/:patientID/:doctorID/:aptDate/:startTime/:endTime/:commMethod/:hourlyCost/:aptStatus/:addInfo/:aptRequestID', async (req, res) => {
    try {
-       const createAppoint = await pool.query('INSERT INTO appointment (patient_user_id, doctor_user_id, appointment_date, start_time, end_time, communication_method, appointment_hourly_cost, appointment_status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)',
-           [req.params.patientID, req.params.doctorID, req.params.aptDate, req.params.startTime, req.params.endTime, req.params.commMethod, req.params.hourlyCost, req.params.aptStatus]);
+       const createAppoint = await pool.query('INSERT INTO appointment (patient_user_id, doctor_user_id, appointment_date, start_time, end_time, communication_method, appointment_hourly_cost, appointment_status, request_description) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)',
+           [req.params.patientID, req.params.doctorID, req.params.aptDate, req.params.startTime, req.params.endTime, req.params.commMethod, req.params.hourlyCost, req.params.aptStatus, req.params.addInfo]);
+       const deleteAppointRequest = await pool.query('DELETE FROM appointmentrequests WHERE request_id = $1', [req.params.aptRequestID]);
        res.json(true);
    } catch (e) {
        console.log("Caught error: " + e);
@@ -239,6 +263,11 @@ app.put('/api/changeEmail/:user_id/:email', async (req, res) => {
         console.log("Caught error: " + e);
     }
 });
+
+/// DELETE
+//
+//
+
 
 
 

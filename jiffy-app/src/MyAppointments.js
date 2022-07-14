@@ -88,6 +88,7 @@ const MyAppointments = () => {
                             <b>Patient:</b> {docApt.first_name} {docApt.last_name}<br/>
                             <b>Patient Address:</b> {docApt.home_address}<br />
                             <b>Patient Billing CC:</b> {docApt.credit_card}<br />
+                            <b>Patient Additional Info:</b> {docApt.request_description}<br />
                         </Card.Text>
                     </Card.Body>
                 </Card>

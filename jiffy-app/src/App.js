@@ -16,6 +16,8 @@ import MyAccount from './MyAccount';
 import MyAppointments from './MyAppointments';
 import ChangeEmail from './ChangeEmail';
 import ChangePwd from './ChangePwd';
+import CreateRequest from './CreateRequest';
+import MyHealth from './MyHealth';
 
 
 
@@ -41,6 +43,8 @@ function App() {
                 <Route path="/myAppointments" element={<MyAppointments></MyAppointments>} />
                 <Route path="/changeEmail" element={<ChangeEmail></ChangeEmail>} />
                 <Route path="/changePassword" element={<ChangePwd></ChangePwd>} />
+                <Route path="/createRequest" element={<CreateRequest></CreateRequest>} />
+                <Route path="/myHealth" element={<MyHealth></MyHealth>} />
             </Routes>
 
             {/*todo:   1. Create the 3 "eh" buttons on patient page + skip button*/}

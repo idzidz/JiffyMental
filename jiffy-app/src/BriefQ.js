@@ -15,7 +15,7 @@ const BriefQ = () => {
             <Row style={{textAlign:"center", paddingBottom:"50px"}}>
                 <Col>
                     <Link to="../gads7">
-                        <button style={{width: "300px"}}>Thoughts about self-harm</button>
+                        <button style={{width: "300px", height:"75px"}}>Thoughts about self-harm</button>
                     </Link>
                 </Col>
             </Row>
@@ -23,7 +23,7 @@ const BriefQ = () => {
             <Row style={{textAlign:"center", paddingBottom:"50px"}}>
                 <Col>
                     <Link to="../gads7">
-                        <button style={{width: "300px"}}>Eating a lot less than usual</button>
+                        <button style={{width: "300px", height:"75px"}}>Eating a lot less than usual</button>
                     </Link>
                 </Col>
             </Row>
@@ -31,7 +31,7 @@ const BriefQ = () => {
             <Row style={{textAlign:"center", paddingBottom:"100px"}}>
                 <Col>
                     <Link to="../gads7">
-                        <button style={{width: "300px"}}>Irregular sleeping schedule</button>
+                        <button style={{width: "300px", height:"75px"}}>Irregular sleeping schedule</button>
                     </Link>
                 </Col>
             </Row>

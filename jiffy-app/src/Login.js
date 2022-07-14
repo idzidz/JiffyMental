@@ -57,6 +57,7 @@ const Login = () => {
                         localStorage.setItem("userType", userType);
                         localStorage.setItem("userID", val.user_id);
                         localStorage.setItem("username", val.username);
+                        localStorage.setItem("email", val.email_address);
                     }catch(e){
                         console.log("Failed to get user type: " + e);
                     }
